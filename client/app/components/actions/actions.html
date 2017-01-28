@@ -1,0 +1,19 @@
+<ul class="action-list">
+    <li ng-repeat="action in actions.list">
+        <button type="button" class="action-list__button"
+            ng-click="actions.click(action)"
+            ng-disabled="actions.disabled(action)"
+            ng-class="{'action-list__button_active': actions.active(action)}"
+            >
+            {{action.title}}
+        </button>
+    </li>
+    <li>
+        <button type="button" class="action-list__button"
+            ng-if="'cancel' !== actions.GAME.currentActions"
+            ng-click="actions.cancel()"
+            >
+            Отменить
+        </button>
+    </li>
+</ul>
