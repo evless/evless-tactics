@@ -1,17 +1,11 @@
-import { USER_ACTIONS } from '../../constants/user_actions.js';
+import { USER_ACTIONS } from '../../constants/userActions.js';
 import { USER_HANDLER_NAME, HERO_HANDLER_NAME } from '../../constants/handlers.js';
+import { Unit } from '../../generics/unit.js';
 
-export default class UnitController {
+export default class EnemyUnitController extends Unit {
     constructor($scope, $rootScope) {
-        this.$rootScope = $rootScope;
-        this.GAME = $rootScope.GAME;
-        this.options = $scope.options;
-        this.disabled = true;
+        super($scope, $rootScope);
         this.enemyAction = null;
-
-        this.$rootScope = $rootScope;
-        $rootScope.$on(USER_HANDLER_NAME, this.userActionHandler.bind(this));
-        $rootScope.$on(HERO_HANDLER_NAME, this.heroActionHandler.bind(this));
     }
 
     click() {
@@ -21,7 +15,7 @@ export default class UnitController {
 
         if (this.enemyAction && 'attack' === this.enemyAction.type) {
             this.options.health -= this.enemyAction.hero.attack;
-            this.$rootScope.$broadcast(USER_HANDLER_NAME, USER_ACTIONS.CANCEL);
+            this.$rootScope.$broadcast(USER_HANDLER_NAME, USER_ACTIONS.END);
 
             return false;
         }
@@ -30,18 +24,6 @@ export default class UnitController {
             type: 'attack',
             hero: this.options
         });
-    }
-
-    disabled() {
-
-    }
-
-    checkGamerName() {
-        return this.GAME.gamerName === this.options.gamerName;
-    }
-
-    checkPhaseAndLocation() {
-        return this.GAME.phase === this.options.location;
     }
 
     heroActionHandler(event, data) {
@@ -64,7 +46,7 @@ export default class UnitController {
 
         if (data === USER_ACTIONS.CANCEL) {
             this.disabled = true;
-            this.enemyHero = null;
+            this.enemyAction = null;
         }
     }
 }

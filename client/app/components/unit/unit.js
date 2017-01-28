@@ -1,18 +1,28 @@
 import angular from 'angular';
-import UnitController from './unit.controller.js';
+import EnemyUnitController from './enemyUnit.controller.js';
+import AllyUnitController from './allyUnit.controller.js';
 
 import './unit.scss';
 
-function Unit() {
+let options = {
+    template: require('./unit.html'),
+    controllerAs: 'unit',
+    transclude: true,
+    scope: {
+        options: '='
+    }
+};
+
+export function EnemyUnit() {
     return {
-        template: require('./unit.html'),
-        controller: UnitController,
-        controllerAs: 'unit',
-        transclude: true,
-        scope: {
-            options: '='
-        }
+        ...options,
+        controller: EnemyUnitController
     };
 };
 
-export default Unit;
+export function AllyUnit() {
+    return {
+        ...options,
+        controller: AllyUnitController
+    };
+};

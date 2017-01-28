@@ -1,4 +1,4 @@
-import { USER_ACTIONS } from '../../constants/user_actions.js';
+import { USER_ACTIONS } from '../../constants/userActions.js';
 import { USER_HANDLER_NAME } from '../../constants/handlers.js';
 
 export default class UnitController {

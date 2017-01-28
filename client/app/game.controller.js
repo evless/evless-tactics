@@ -1,6 +1,6 @@
-import { UNIT_TYPES } from './constants/unit_types.js';
+import { UNIT_TYPES } from './constants/unitTypes.js';
 import { PHASES } from './constants/phases.js';
-import { USER_ACTIONS } from './constants/user_actions.js';
+import { USER_ACTIONS } from './constants/userActions.js';
 import { USER_HANDLER_NAME } from './constants/handlers.js';
 
 export default class GameController {
@@ -10,7 +10,15 @@ export default class GameController {
         this.enemyName = $rootScope.GAME.enemyName = 'second';
         this.phase = $rootScope.GAME.phase = PHASES.VANGUARD; // Номер фазы
         this.currentActions = $rootScope.GAME.currentActions = USER_ACTIONS.CANCEL; // Текущее действие
-        $rootScope.$on(USER_HANDLER_NAME, (event, data) => $rootScope.GAME.currentActions = data);
+        $rootScope.$on(USER_HANDLER_NAME, (event, data) => {
+            if (data === USER_ACTIONS.END) {
+                $rootScope.$broadcast(USER_HANDLER_NAME, USER_ACTIONS.CANCEL);
+
+                return;
+            }
+
+            $rootScope.GAME.currentActions = data;
+        });
         this.army = {
             first: [
                 [{
