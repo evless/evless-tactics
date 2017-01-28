@@ -19,135 +19,101 @@ export default class GameController {
 
             $rootScope.GAME.currentActions = data;
         });
+
+        let tmp = {
+            type: UNIT_TYPES.CLEAR,
+            gamerName: 'first',
+            health: 10,
+            attack: 1,
+            classes: 'unit_vampir'
+        };
+
         this.army = {
             first: [
                 [{
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'first',
-                    location: PHASES.VANGUARD,
-                    health: 10,
-                    attack: 1
+                    ...tmp,
+                    location: PHASES.VANGUARD
                 },
                 {
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'first',
-                    location: PHASES.VANGUARD,
-                    health: 10,
-                    attack: 2
+                    ...tmp,
+                    location: PHASES.VANGUARD
                 },
                 {
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'first',
-                    location: PHASES.VANGUARD,
-                    health: 10,
-                    attack: 3
+                    ...tmp,
+                    location: PHASES.VANGUARD
                 }],
                 [{
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'first',
-                    location: PHASES.WING,
-                    health: 10,
-                    attack: 2
+                    ...tmp,
+                    location: PHASES.WING
                 },
                 {
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'first',
+                    ...tmp,
                     location: PHASES.WING,
-                    health: 10,
-                    attack: 2
+                    classes: 'unit_luk'
                 },
                 {
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'first',
-                    location: PHASES.WING,
-                    health: 10,
-                    attack: 2
+                    ...tmp,
+                    location: PHASES.WING
                 }],
                 [{
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'first',
-                    location: PHASES.REAR,
-                    health: 10,
-                    attack: 2
+                    ...tmp,
+                    location: PHASES.REAR
                 },
                 {
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'first',
-                    location: PHASES.REAR,
-                    health: 10,
-                    attack: 2
+                    ...tmp,
+                    location: PHASES.REAR
                 },
                 {
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'first',
-                    location: PHASES.REAR,
-                    health: 10,
-                    attack: 2
+                    ...tmp,
+                    location: PHASES.REAR
                 }]
             ],
             second: [
                 [{
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'second',
+                    ...tmp,
                     location: PHASES.REAR,
-                    health: 10,
-                    attack: 2
+                    gamerName: 'second'
                 },
                 {
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'second',
+                    ...tmp,
                     location: PHASES.REAR,
-                    health: 10,
-                    attack: 2
+                    gamerName: 'second'
                 },
                 {
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'second',
+                    ...tmp,
                     location: PHASES.REAR,
-                    health: 10,
-                    attack: 2
+                    gamerName: 'second'
                 }],
                 [{
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'second',
+                    ...tmp,
                     location: PHASES.WING,
-                    health: 10,
-                    attack: 2
+                    gamerName: 'second'
                 },
                 {
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'second',
+                    ...tmp,
                     location: PHASES.WING,
-                    health: 10,
-                    attack: 2
+                    gamerName: 'second',
+                    classes: 'unit_sagas'
                 },
                 {
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'second',
+                    ...tmp,
                     location: PHASES.WING,
-                    health: 10,
-                    attack: 2
+                    gamerName: 'second'
                 }],
                 [{
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'second',
+                    ...tmp,
                     location: PHASES.VANGUARD,
-                    health: 10,
-                    attack: 2
+                    gamerName: 'second'
                 },
                 {
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'second',
+                    ...tmp,
                     location: PHASES.VANGUARD,
-                    health: 10,
-                    attack: 2
+                    gamerName: 'second'
                 },
                 {
-                    type: UNIT_TYPES.CLEAR,
-                    gamerName: 'second',
+                    ...tmp,
                     location: PHASES.VANGUARD,
-                    health: 10,
-                    attack: 2
+                    gamerName: 'second'
                 }]
             ]
         };
