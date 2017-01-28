@@ -7,10 +7,14 @@
 3. SCSS (CSS)
 4. Gulp + Webpack
 
-## Установка
-1. NodeJs v.6
+## Установка и запуск
+1. Установить NodeJs версии 6.x
+2. Выкачать проект: git clone https://vcs.proitr.ru/grachev/pixel-tactics.git
+3. cd pixel-tactics
+4. Установить зависимости: npm i
+5. gulp dev
 
-## Запуск
+## Основные команды для запуск
 1. gulp dev - Запуск в режиме разработки
 2. gulp prod:start - Запуск в продакшн режиме
 3. gulp prod:stop - Остановка продакшн режима
