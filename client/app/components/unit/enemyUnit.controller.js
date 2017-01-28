@@ -16,7 +16,7 @@ export default class EnemyUnitController extends Unit {
         if (this.enemyAction && 'attack' === this.enemyAction.type) {
             this.options.health -= this.enemyAction.hero.attack;
             this.$rootScope.$broadcast(USER_HANDLER_NAME, USER_ACTIONS.END);
-
+            
             return false;
         }
 
@@ -47,6 +47,8 @@ export default class EnemyUnitController extends Unit {
         if (data === USER_ACTIONS.CANCEL) {
             this.disabled = true;
             this.enemyAction = null;
+
+            return;
         }
     }
 }

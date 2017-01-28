@@ -18,6 +18,7 @@ const mongoose = require('mongoose');
 //     app.use(require('./middlewares/' + middleware));
 // });
 
+
 app.use(kstatis(config.buildFolder()));
 
 app.use(function *(next) {
