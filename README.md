@@ -1,5 +1,5 @@
-# Pixel Tactics
-Импорт настольной игры Pixel Tactics.
+# Linless Tactics
+Импорт настольной игры
 
 ## Используемые технологии
 1. Koa (NodeJs)
@@ -10,7 +10,7 @@
 ## Установка и запуск
 1. Установить NodeJs версии 6.x
 2. Выкачать проект: git clone https://vcs.proitr.ru/grachev/pixel-tactics.git
-3. cd pixel-tactics
+3. cd linless-tactics
 4. Установить зависимости: npm i
 5. gulp dev
 

@@ -64,7 +64,7 @@ rules:
     indent:
         - warn
         - 4
-        - {SwitchCase: 1}
+        - { SwitchCase: 1 }
     key-spacing:
         - error
     keyword-spacing:
