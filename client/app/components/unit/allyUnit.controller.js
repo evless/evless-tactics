@@ -1,7 +1,7 @@
 import { USER_ACTIONS } from '../../constants/userActions.js';
 import { USER_HANDLER_NAME, HERO_HANDLER_NAME } from '../../constants/handlers.js';
 import { Unit } from './unit.class.js';
-import { UNIT_ACTIONS } from '../../constants/unitActions.js';
+import { UNIT_ACTIONS } from '../../constants/unit.js';
 
 export default class AllyUnitController extends Unit {
     constructor($scope, $rootScope) {
@@ -21,9 +21,7 @@ export default class AllyUnitController extends Unit {
     }
 
     attack(enemy) {
-        enemy.options.health -= this.options.attack;
-
-        return enemy;
+        return this.options.handlers.attack.call(this, enemy);
     }
 
     heroActionHandler(event, data) {
@@ -38,7 +36,10 @@ export default class AllyUnitController extends Unit {
     }
 
     userActionHandler(event, data) {
-        if (data === USER_ACTIONS.ATTACK && this.checkGamerName() && this.checkPhaseAndLocation()) {
+        if (data === USER_ACTIONS.ATTACK
+            && this.checkGamerName()
+            && this.checkPhaseAndLocation()
+            && !this.checkClearCard()) {
             this.disabled = false;
 
             return;

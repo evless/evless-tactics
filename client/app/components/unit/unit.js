@@ -8,6 +8,7 @@ let options = {
     template: require('./unit.html'),
     controllerAs: 'unit',
     transclude: true,
+    replace: true,
     scope: {
         options: '='
     }

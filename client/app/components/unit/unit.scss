@@ -7,7 +7,9 @@
     cursor: pointer;
     background-size: 100% 100%;
     margin: 5px;
-    font-size: 50px;
+    font-size: 23px;
+    vertical-align: middle;
+    position: relative;
 
     transition: 0.3s all;
 
@@ -18,4 +20,34 @@
     &.unit_disabled {
         opacity: 0.5;
     }
+}
+
+.unit__attack {
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    text-align: center;
+    text-shadow: 0 0 2px #fff;
+    width: 30px;
+    height: 30px;
+    line-height: 25px;
+    display: inline-block;
+    color: red;
+    background-image: url('../../../public/images/sword.png');
+    background-size: 100% 100%;
+}
+
+.unit__health {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    text-align: center;
+    text-shadow: 0 0 2px #fff;
+    width: 30px;
+    height: 30px;
+    line-height: 25px;
+    display: inline-block;
+    color: blue;
+    background-image: url('../../../public/images/shild.png');
+    background-size: 100% 100%;
 }

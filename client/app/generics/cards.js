@@ -1,3 +1,5 @@
+import { Vampir } from './unit/Vampir.js';
+
 export const UnitList = [
     'Alchemist',
     'Archer',
@@ -27,15 +29,5 @@ export const UnitList = [
 ];
 
 export const UnitOptions = {
-    Alchemist: {
-        char: {
-            attack: 1,
-            health: 2
-        },
-        method: {
-            attack() {
-                
-            }
-        }
-    }
+    Vampir: Vampir
 };

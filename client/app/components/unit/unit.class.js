@@ -1,3 +1,4 @@
+import { UNIT_TYPES } from '../../constants/unit.js';
 import { USER_HANDLER_NAME, HERO_HANDLER_NAME } from '../../constants/handlers.js';
 
 export class Unit {
@@ -11,11 +12,19 @@ export class Unit {
         $rootScope.$on(HERO_HANDLER_NAME, this.heroActionHandler.bind(this));
     }
 
+    checkDeath() {
+        return this.options.death;
+    }
+
     checkGamerName() {
         return this.GAME.gamerName === this.options.gamerName;
     }
 
     checkPhaseAndLocation() {
         return this.GAME.phase === this.options.location;
+    }
+
+    checkClearCard() {
+        return this.options.type === UNIT_TYPES.CLEAR;
     }
 }

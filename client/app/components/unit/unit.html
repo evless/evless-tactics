@@ -1,4 +1,9 @@
-<span class="unit"
+<div class="unit"
     ng-class="[unit.options.classes, {'unit_disabled' : unit.disabled}]"
     ng-click="unit.click()"
-    >{{unit.options.attack}}/{{unit.options.health}}</span>
+    >
+    <div ng-if="'clear' !== unit.options.type">
+        <div class="unit__attack">{{unit.options.characteristics.attack}}</div>
+        <div class="unit__health">{{unit.options.characteristics.health}}</div>
+    </div>
+</div>

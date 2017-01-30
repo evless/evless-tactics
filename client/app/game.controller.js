@@ -1,7 +1,8 @@
-import { UNIT_TYPES } from './constants/unitTypes.js';
+import { UNIT_TYPES } from './constants/unit.js';
 import { PHASES } from './constants/phases.js';
 import { USER_ACTIONS } from './constants/userActions.js';
 import { USER_HANDLER_NAME } from './constants/handlers.js';
+import { UnitOptions } from './generics/cards.js';
 
 export default class GameController {
     constructor($scope, $rootScope) {
@@ -23,17 +24,20 @@ export default class GameController {
         let tmp = {
             type: UNIT_TYPES.CLEAR,
             gamerName: 'first',
-            health: 10,
-            attack: 1,
-            classes: 'unit_vampir'
+            classes: 'unit_clear_first'
         };
 
-        this.army = {
+        this.army = $rootScope.GAME.army = {
             first: [
-                [{
+                [angular.copy({
                     ...tmp,
-                    location: PHASES.VANGUARD
-                },
+                    ...UnitOptions.Vampir,
+                    location: PHASES.VANGUARD,
+                    characteristics: {
+                        ...UnitOptions.Vampir.characteristics,
+                        attack: 10
+                    }
+                }),
                 {
                     ...tmp,
                     location: PHASES.VANGUARD
@@ -49,7 +53,10 @@ export default class GameController {
                 {
                     ...tmp,
                     location: PHASES.WING,
-                    classes: 'unit_luk'
+                    type: UNIT_TYPES.KING,
+                    classes: 'unit_luk',
+                    health: 10,
+                    attack: 1
                 },
                 {
                     ...tmp,
@@ -69,51 +76,73 @@ export default class GameController {
                 }]
             ],
             second: [
-                [{
-                    ...tmp,
-                    location: PHASES.REAR,
-                    gamerName: 'second'
-                },
-                {
-                    ...tmp,
-                    location: PHASES.REAR,
-                    gamerName: 'second'
-                },
-                {
-                    ...tmp,
-                    location: PHASES.REAR,
-                    gamerName: 'second'
-                }],
+                [
+                    angular.copy({
+                        ...tmp,
+                        ...UnitOptions.Vampir,
+                        location: PHASES.VANGUARD,
+                        gamerName: 'second',
+                        position: 0
+                    }),
+                    angular.copy({
+                        ...tmp,
+                        ...UnitOptions.Vampir,
+                        location: PHASES.VANGUARD,
+                        gamerName: 'second',
+                        position: 1
+                    }),
+                    angular.copy({
+                        ...tmp,
+                        ...UnitOptions.Vampir,
+                        location: PHASES.VANGUARD,
+                        gamerName: 'second',
+                        position: 2
+                    })
+                ],
                 [{
                     ...tmp,
                     location: PHASES.WING,
-                    gamerName: 'second'
+                    gamerName: 'second',
+                    classes: 'unit_clear_second',
+                    position: 0
                 },
                 {
                     ...tmp,
                     location: PHASES.WING,
                     gamerName: 'second',
-                    classes: 'unit_sagas'
+                    classes: 'unit_vampir',
+                    type: UNIT_TYPES.KING,
+                    health: 10,
+                    attack: 1,
+                    position: 1
                 },
                 {
                     ...tmp,
                     location: PHASES.WING,
-                    gamerName: 'second'
+                    gamerName: 'second',
+                    classes: 'unit_clear_second',
+                    position: 2
                 }],
                 [{
                     ...tmp,
-                    location: PHASES.VANGUARD,
-                    gamerName: 'second'
+                    location: PHASES.REAR,
+                    gamerName: 'second',
+                    classes: 'unit_clear_second',
+                    position: 0
                 },
                 {
                     ...tmp,
-                    location: PHASES.VANGUARD,
-                    gamerName: 'second'
+                    location: PHASES.REAR,
+                    gamerName: 'second',
+                    classes: 'unit_clear_second',
+                    position: 1
                 },
                 {
                     ...tmp,
-                    location: PHASES.VANGUARD,
-                    gamerName: 'second'
+                    location: PHASES.REAR,
+                    gamerName: 'second',
+                    classes: 'unit_clear_second',
+                    position: 2
                 }]
             ]
         };
