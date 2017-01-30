@@ -17,9 +17,18 @@ body {
 
 .map {
     width: 500px;
-    margin: 30px auto;
+    margin: 0 auto;
+    padding: 50px 0;
 }
 
 .grid {
     width: 100%;
+}
+
+.enemy-field {
+    background: rgba(255, 0, 0, .1);
+}
+
+.ally-field {
+    background: rgba(0, 255, 55, .1);
 }

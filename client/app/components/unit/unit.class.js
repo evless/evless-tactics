@@ -1,4 +1,4 @@
-import { USER_HANDLER_NAME, HERO_HANDLER_NAME } from '../constants/handlers.js';
+import { USER_HANDLER_NAME, HERO_HANDLER_NAME } from '../../constants/handlers.js';
 
 export class Unit {
     constructor($scope, $rootScope) {

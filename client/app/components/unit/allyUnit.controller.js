@@ -1,6 +1,7 @@
 import { USER_ACTIONS } from '../../constants/userActions.js';
 import { USER_HANDLER_NAME, HERO_HANDLER_NAME } from '../../constants/handlers.js';
-import { Unit } from '../../generics/unit.js';
+import { Unit } from './unit.class.js';
+import { UNIT_ACTIONS } from '../../constants/unitActions.js';
 
 export default class AllyUnitController extends Unit {
     constructor($scope, $rootScope) {
@@ -14,9 +15,15 @@ export default class AllyUnitController extends Unit {
         }
 
         this.$rootScope.$broadcast(HERO_HANDLER_NAME, {
-            type: 'attack',
-            hero: this.options
+            type: UNIT_ACTIONS.ATTACK,
+            hero: this
         });
+    }
+
+    attack(enemy) {
+        enemy.options.health -= this.options.attack;
+
+        return enemy;
     }
 
     heroActionHandler(event, data) {

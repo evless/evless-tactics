@@ -1,12 +1,15 @@
 <actions></actions>
-<div class="map">
-    <div ng-repeat="squad in game.army[game.enemyName] track by $index" class="grid">
-        <enemy-unit ng-repeat="unit in squad" options="unit"></enemy-unit>
+<div class="enemy-field">
+    <div class="map">
+        <div ng-repeat="squad in game.army[game.enemyName] track by $index" class="grid">
+            <enemy-unit ng-repeat="unit in squad" options="unit"></enemy-unit>
+        </div>
     </div>
 </div>
-
-<div class="map">
-    <div ng-repeat="squad in game.army[game.gamerName] track by $index" class="grid">
-        <ally-unit ng-repeat="unit in squad" options="unit"></ally-unit>
+<div class="ally-field">
+    <div class="map">
+        <div ng-repeat="squad in game.army[game.gamerName] track by $index" class="grid">
+            <ally-unit ng-repeat="unit in squad" options="unit"></ally-unit>
+        </div>
     </div>
 </div>
