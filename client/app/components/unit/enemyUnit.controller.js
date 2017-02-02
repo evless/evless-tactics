@@ -42,7 +42,7 @@ export default class EnemyUnitController extends Unit {
     heroActionHandler(event, data) {
         if (UNIT_ACTIONS.ATTACK === data.type && !this.checkDeath()) {
             if (UNIT_TYPE_ATTACK.FIGHT === data.hero.options.characteristics.attackType) {
-                if (this.checkClearPreUnit() && !this.checkGamerName() && !this.checkClearCard()) {
+                if (this.checkClearPreUnit() && !this.checkGamerName() && !this.checkClearTypeCard()) {
                     this.disabled = false;
                     this.enemyAction = data;
 
@@ -51,7 +51,7 @@ export default class EnemyUnitController extends Unit {
             }
 
             if (UNIT_TYPE_ATTACK.RANGE === data.hero.options.characteristics.attackType) {
-                if (!this.checkGamerName() && !this.checkClearCard()) {
+                if (!this.checkGamerName() && !this.checkClearTypeCard()) {
                     this.disabled = false;
                     this.enemyAction = data;
 

@@ -61,7 +61,7 @@ export default class AllyUnitController extends Unit {
 
     heroActionHandler(event, data) {
 
-        if (data.type === UNIT_ACTIONS.SHIFT && this.checkClearCard()) {
+        if (data.type === UNIT_ACTIONS.SHIFT && this.checkClearTypeCard()) {
             this.lastHeroAction = data;
             this.disabled = false;
 
@@ -74,7 +74,7 @@ export default class AllyUnitController extends Unit {
     userActionHandler(event, data) {
         this.lastUserAction = data;
 
-        if (data === USER_ACTIONS.SHIFT && !this.checkClearCard() && !this.checkDeath()) {
+        if (data === USER_ACTIONS.SHIFT && !this.checkClearTypeCard() && !this.checkDeath() && !this.checkKingTypeCard()) {
             this.disabled = false;
 
             return;
@@ -88,7 +88,7 @@ export default class AllyUnitController extends Unit {
 
         if (data === USER_ACTIONS.ATTACK
             && this.checkPhaseAndLocation()
-            && !this.checkClearCard()
+            && !this.checkClearTypeCard()
             && !this.checkDeath()) {
             this.disabled = false;
 

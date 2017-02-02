@@ -25,8 +25,12 @@ export class Unit {
         return this.GAME.phase === this.options.location.phase;
     }
 
-    checkClearCard() {
+    checkClearTypeCard() {
         return this.options.type === UNIT_TYPES.CLEAR;
+    }
+
+    checkKingTypeCard() {
+        return this.options.type === UNIT_TYPES.KING;
     }
 
     /**
