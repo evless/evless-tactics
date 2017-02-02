@@ -17,8 +17,8 @@ export default class EnemyUnitController extends Unit {
 
         if (this.enemyAction && UNIT_ACTIONS.ATTACK === this.enemyAction.type) {
             this.enemyAction.hero.attack(this);
-            if (0 > this.options.characteristics.health) {
-                this.options.death = 1;
+            if (0 >= this.options.characteristics.health) {
+                this.options.death = true;
             }
             this.$rootScope.$broadcast(USER_HANDLER_NAME, USER_ACTIONS.END);
 
@@ -27,30 +27,16 @@ export default class EnemyUnitController extends Unit {
     }
 
     checkClearPreUnit() {
-        let position = this.options.position;
         let army = this.$rootScope.GAME.army[this.options.gamerName];
-        let row;
-
-        switch (this.options.location) {
-            case PHASES.VANGUARD:
-                row = 0;
-                break;
-            case PHASES.WING:
-                row = 1;
-                break;
-            case PHASES.REAR:
-                row = 2;
-                break;
-            default:
-                row = 0;
-        }
+        let row = this.options.location.row;
+        let column = this.options.location.column;
 
         // Если он стоим первым
         if (0 === row) {
             return true;
         }
 
-        return army[row - 1][position].type === UNIT_TYPES.CLEAR || army[row - 1][position].death;
+        return army[row - 1][column].type === UNIT_TYPES.CLEAR || army[row - 1][column].death;
     }
 
     heroActionHandler(event, data) {

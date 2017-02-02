@@ -1,5 +1,5 @@
 export const PHASES = {
-    VANGUARD: 'vanduard',
+    VANGUARD: 'vanguard',
     WING: 'wing',
     REAR: 'rear'
 };

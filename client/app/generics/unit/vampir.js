@@ -6,7 +6,7 @@ export const Vampir = {
     characteristics: {
         attack: 2,
         health: 6,
-        attackType: UNIT_TYPE_ATTACK.RANGE
+        attackType: UNIT_TYPE_ATTACK.FIGHT
     },
     handlers: {
         attack(enemy) {

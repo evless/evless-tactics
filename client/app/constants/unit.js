@@ -1,6 +1,7 @@
 export const UNIT_ACTIONS = {
     ATTACK: 'attack',
-    DEATH: 'death'
+    DEATH: 'death',
+    SHIFT: 'shift'
 };
 
 export const UNIT_TYPE_ATTACK = {

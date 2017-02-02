@@ -32,27 +32,54 @@ export default class GameController {
                 [angular.copy({
                     ...tmp,
                     ...UnitOptions.Vampir,
-                    location: PHASES.VANGUARD,
+                    location: {
+                        phase: PHASES.VANGUARD,
+                        row: 0,
+                        column: 0
+                    },
                     characteristics: {
                         ...UnitOptions.Vampir.characteristics,
                         attack: 10
                     }
                 }),
+                    angular.copy({
+                        ...tmp,
+                        ...UnitOptions.Vampir,
+                        location: {
+                            phase: PHASES.VANGUARD,
+                            row: 0,
+                            column: 1
+                        },
+                        characteristics: {
+                            ...UnitOptions.Vampir.characteristics,
+                            attack: 10,
+                            health: -5
+                        },
+                        death: true
+                    }),
                 {
                     ...tmp,
-                    location: PHASES.VANGUARD
-                },
-                {
-                    ...tmp,
-                    location: PHASES.VANGUARD
+                    location: {
+                        phase: PHASES.VANGUARD,
+                        row: 0,
+                        column: 2
+                    },
                 }],
                 [{
                     ...tmp,
-                    location: PHASES.WING
+                    location: {
+                        phase: PHASES.WING,
+                        row: 1,
+                        column: 0
+                    }
                 },
                 {
                     ...tmp,
-                    location: PHASES.WING,
+                    location: {
+                        phase: PHASES.WING,
+                        row: 1,
+                        column: 1
+                    },
                     type: UNIT_TYPES.KING,
                     classes: 'unit_luk',
                     health: 10,
@@ -60,19 +87,35 @@ export default class GameController {
                 },
                 {
                     ...tmp,
-                    location: PHASES.WING
+                    location: {
+                        phase: PHASES.WING,
+                        row: 1,
+                        column: 2
+                    }
                 }],
                 [{
                     ...tmp,
-                    location: PHASES.REAR
+                    location: {
+                        phase: PHASES.REAR,
+                        row: 2,
+                        column: 0
+                    }
                 },
                 {
                     ...tmp,
-                    location: PHASES.REAR
+                    location: {
+                        phase: PHASES.REAR,
+                        row: 2,
+                        column: 1
+                    }
                 },
                 {
                     ...tmp,
-                    location: PHASES.REAR
+                    location: {
+                        phase: PHASES.REAR,
+                        row: 2,
+                        column: 2
+                    }
                 }]
             ],
             second: [
@@ -80,69 +123,97 @@ export default class GameController {
                     angular.copy({
                         ...tmp,
                         ...UnitOptions.Vampir,
-                        location: PHASES.VANGUARD,
-                        gamerName: 'second',
-                        position: 0
+                        location: {
+                            phase: PHASES.VANGUARD,
+                            row: 0,
+                            column: 0
+                        },
+                        gamerName: 'second'
                     }),
                     angular.copy({
                         ...tmp,
                         ...UnitOptions.Vampir,
-                        location: PHASES.VANGUARD,
-                        gamerName: 'second',
-                        position: 1
+                        location: {
+                            phase: PHASES.VANGUARD,
+                            row: 0,
+                            column: 1
+                        },
+                        gamerName: 'second'
                     }),
                     angular.copy({
                         ...tmp,
                         ...UnitOptions.Vampir,
-                        location: PHASES.VANGUARD,
-                        gamerName: 'second',
-                        position: 2
+                        location: {
+                            phase: PHASES.VANGUARD,
+                            row: 0,
+                            column: 2
+                        },
+                        gamerName: 'second'
                     })
                 ],
                 [{
                     ...tmp,
-                    location: PHASES.WING,
+                    location: {
+                        phase: PHASES.WING,
+                        row: 1,
+                        column: 0
+                    },
                     gamerName: 'second',
                     classes: 'unit_clear_second',
                     position: 0
                 },
                 {
                     ...tmp,
-                    location: PHASES.WING,
+                    location: {
+                        phase: PHASES.WING,
+                        row: 1,
+                        column: 1
+                    },
                     gamerName: 'second',
                     classes: 'unit_vampir',
                     type: UNIT_TYPES.KING,
                     health: 10,
                     attack: 1,
-                    position: 1
                 },
                 {
                     ...tmp,
-                    location: PHASES.WING,
+                    location: {
+                        phase: PHASES.WING,
+                        row: 1,
+                        column: 2
+                    },
                     gamerName: 'second',
-                    classes: 'unit_clear_second',
-                    position: 2
+                    classes: 'unit_clear_second'
                 }],
                 [{
                     ...tmp,
-                    location: PHASES.REAR,
+                    location: {
+                        phase: PHASES.REAR,
+                        row: 2,
+                        column: 0
+                    },
                     gamerName: 'second',
-                    classes: 'unit_clear_second',
-                    position: 0
+                    classes: 'unit_clear_second'
                 },
                 {
                     ...tmp,
-                    location: PHASES.REAR,
+                    location: {
+                        phase: PHASES.REAR,
+                        row: 2,
+                        column: 1
+                    },
                     gamerName: 'second',
-                    classes: 'unit_clear_second',
-                    position: 1
+                    classes: 'unit_clear_second'
                 },
                 {
                     ...tmp,
-                    location: PHASES.REAR,
+                    location: {
+                        phase: PHASES.REAR,
+                        row: 2,
+                        column: 2
+                    },
                     gamerName: 'second',
-                    classes: 'unit_clear_second',
-                    position: 2
+                    classes: 'unit_clear_second'
                 }]
             ]
         };
