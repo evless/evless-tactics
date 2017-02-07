@@ -7,15 +7,15 @@ module.exports = {
     context: __dirname + '/client',
     entry: {
         index: './app/game.js',
-        vendor: ['angular', 'jquery'],
+        library: ['angular', 'jquery', 'angular-ui-router']
     },
     output: {
         path: __dirname + '/build',
         filename: '[name].js'
     },
     resolve: {
-        modulesDirectories: ['bower_components', 'node_modules'],
-        extenstions: ['']
+        modulesDirectories: ['node_modules'],
+        extenstions: ['', '.min.js']
     },
     resolveLoader: {
         modulesDirectories: ['node_modules'],
@@ -33,41 +33,37 @@ module.exports = {
 
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            minChunks: 4
+            minChunks: 2
         })
     ],
     module: {
+        noParse: [/jquery|angular-ui-router/],
         loaders: [
             {
                 test: /\.scss$/,
                 loaders: ['style', 'css', 'sass']
             },
             {
-                test: /\.css$/,
-                loaders: ['style', 'css']
-            },
-            {
                 test: /\.html$/,
-                loader: 'html'
-            },
-            {
-                test: /.*\.(jsx|js)?$/,
-                loader: 'babel',
-                exclude: /node_modules/,
+                loader: 'html',
                 query: {
-                    presets: ['es2015', 'stage-0']
+                    minimize: true
                 }
             },
             {
                 test: /.*\.(jsx|js)?$/,
-                loader: 'eslint',
-                exclude: /node_modules/
+                loader: 'babel',
+                include: __dirname + '/client',
+                exclude: /(node_modules|bower_components)/,
+                query: {
+                    cacheDirectory: true,
+                    presets: ['es2015', 'stage-0']
+                }
             },
             {
                 test: /.*\.(gif|png|jpe?g|svg)$/i,
                 loaders: [
-                    'file?hash=sha512&digest=hex&name=[hash].[ext]',
-                    'image-webpack?{optimizationLevel: 5, interlaced: false, pngquant:{quality: "60-100", speed: 2}, mozjpeg: {quality: 65}}'
+                    'file?hash=sha512&digest=hex&name=[hash].[ext]'
                 ]
             },
             {
