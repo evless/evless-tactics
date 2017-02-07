@@ -27,8 +27,6 @@ export default class GameController {
             classes: 'unit_clear_first'
         };
 
-        console.log(UnitOptions);
-
         this.army = $rootScope.GAME.army = {
             first: [
                 [angular.copy({
