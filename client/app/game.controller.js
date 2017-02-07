@@ -27,33 +27,26 @@ export default class GameController {
             classes: 'unit_clear_first'
         };
 
+        console.log(UnitOptions);
+
         this.army = $rootScope.GAME.army = {
             first: [
                 [angular.copy({
                     ...tmp,
-                    ...UnitOptions.Vampir,
+                    ...UnitOptions.Lord,
                     location: {
                         phase: PHASES.VANGUARD,
                         row: 0,
                         column: 0
-                    },
-                    characteristics: {
-                        ...UnitOptions.Vampir.characteristics,
-                        attack: 10
                     }
                 }),
                     angular.copy({
                         ...tmp,
-                        ...UnitOptions.Vampir,
+                        ...UnitOptions.Witch,
                         location: {
                             phase: PHASES.VANGUARD,
                             row: 0,
                             column: 1
-                        },
-                        characteristics: {
-                            ...UnitOptions.Vampir.characteristics,
-                            attack: 10,
-                            health: -5
                         },
                         death: true
                     }),
