@@ -2,7 +2,7 @@ import { UNIT_TYPES } from './constants/unit.js';
 import { PHASES } from './constants/phases.js';
 import { USER_ACTIONS } from './constants/userActions.js';
 import { USER_HANDLER_NAME } from './constants/handlers.js';
-import { UnitOptions } from './generics/cards.js';
+import { UnitOptions, UnitList } from './generics/cards.js';
 
 export default class GameController {
     constructor($scope, $rootScope) {
@@ -18,13 +18,45 @@ export default class GameController {
                 return;
             }
 
+            if (data === USER_ACTIONS.CARD) {
+                let newCard = this.deck[this.gamerName][0].shift();
+                $rootScope.GAME.cards[this.gamerName].push(UnitOptions[newCard]);
+                $rootScope.$broadcast(USER_HANDLER_NAME, USER_ACTIONS.END);
+
+                return;
+            }
+
             $rootScope.GAME.currentActions = data;
         });
+
+        /**
+         * Удаление карты из руки
+         * @param  {String} gamer Имя игрока, у которого нужно удалить карту
+         * @param  {Object} item  Объект карты
+         */
+        $rootScope.removeCard = (gamer, item) => {
+            for (let i = 0; i < this.cards[gamer].length; i++) {
+                if (angular.equals(this.cards[gamer][i], item)) {
+                    this.cards[gamer].splice(i, 1);
+                    break;
+                }
+            }
+        };
 
         let tmp = {
             type: UNIT_TYPES.CLEAR,
             gamerName: 'first',
             classes: 'unit_clear_first'
+        };
+
+        this.deck = $rootScope.GAME.deck = {
+            first: [UnitList.slice().sort(() => 0.5 - Math.random())],
+            second: [UnitList.slice().sort(() => 0.5 - Math.random())]
+        };
+
+        this.cards = $rootScope.GAME.cards = {
+            first: [],
+            second: []
         };
 
         this.army = $rootScope.GAME.army = {
@@ -45,8 +77,7 @@ export default class GameController {
                             phase: PHASES.VANGUARD,
                             row: 0,
                             column: 1
-                        },
-                        death: true
+                        }
                     }),
                 {
                     ...tmp,

@@ -1,4 +1,5 @@
 import { USER_ACTIONS } from '../../constants/userActions.js';
+import { CARD_ACTIONS } from '../../constants/card.js';
 import { USER_HANDLER_NAME, HERO_HANDLER_NAME } from '../../constants/handlers.js';
 import { Unit } from './unit.class.js';
 import { UNIT_ACTIONS, UNIT_TYPES } from '../../constants/unit.js';
@@ -8,11 +9,23 @@ export default class AllyUnitController extends Unit {
         super($scope, $rootScope);
         this.lastHeroAction = null;
         this.lastUserAction = null;
+        this.lastCardAction = null;
     }
 
     click() {
         if (this.disabled) {
             return false;
+        }
+
+        if (this.lastCardAction) {
+            switch (this.lastCardAction.type) {
+                case CARD_ACTIONS.RECRUIT:
+                    this.recruitCard(this.lastCardAction.card);
+                    this.$rootScope.$broadcast(USER_HANDLER_NAME, USER_ACTIONS.END);
+                    break;
+                default:
+                    this.$rootScope.$broadcast(USER_HANDLER_NAME, USER_ACTIONS.CANCEL);
+            }
         }
 
         if (this.lastHeroAction) {
@@ -99,5 +112,16 @@ export default class AllyUnitController extends Unit {
             this.disabled = true;
             this.allyAction = null;
         }
+    }
+
+    cardActionHandler(event, data) {
+        if (data.type === CARD_ACTIONS.RECRUIT && this.checkClearTypeCard()) {
+            this.disabled = false;
+            this.lastCardAction = data;
+
+            return;
+        }
+
+        this.disabled = true;
     }
 }

@@ -3,7 +3,7 @@ import ActionsController from './actions.controller.js';
 
 import './actions.scss';
 
-function Actions() {
+export default function Actions() {
     return {
         template: require('./actions.html'),
         controller: ActionsController,
@@ -11,5 +11,3 @@ function Actions() {
         transclude: true
     };
 };
-
-export default Actions;

@@ -9,9 +9,7 @@ export default function routing($urlRouterProvider, $locationProvider, $statePro
             url: '/',
             views: {
                 '@': {
-                    template: require('./body.html'),
-                    controller: 'gameController',
-                    controllerAs: 'game'
+                    template: require('./body.html')
                 }
             }
         });

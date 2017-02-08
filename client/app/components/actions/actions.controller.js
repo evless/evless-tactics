@@ -5,6 +5,7 @@ export default class UnitController {
     constructor($scope, $rootScope) {
         this.$rootScope = $rootScope;
         this.GAME = $rootScope.GAME;
+
         this.list = [
             {
                 title: 'Найм',
@@ -38,6 +39,11 @@ export default class UnitController {
     }
 
     disabled(item) {
+        // Дизейблим кнопку, если в колоде закончились карты
+        if (item.name === USER_ACTIONS.CARD && 0 === this.$rootScope.GAME.deck[this.$rootScope.GAME.gamerName][0].length) {
+            return true;
+        }
+
         if (USER_ACTIONS.CANCEL === this.GAME.currentActions) {
             return false;
         }
